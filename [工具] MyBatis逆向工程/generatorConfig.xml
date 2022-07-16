@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="testTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" /><!--去掉注释-->
+		</commentGenerator>
+		<!--配置数据库-->
+		<jdbcConnection
+				driverClass="com.mysql.jdbc.Driver"
+				connectionURL="jdbc:mysql://localhost:3306/study_mybatis?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+				userId="root"
+				password="root">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+
+		<!--entity生成位置-->
+		<javaModelGenerator targetPackage="cn.jdx.entity" targetProject=".\src">
+			<property name="enableSubPackages" value="false" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+        <!--mapper生成位置 -->
+		<sqlMapGenerator targetPackage="cn.jdx.mapper" targetProject=".\src">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!--mapper.xml生成位置 -->
+		<javaClientGenerator targetPackage="cn.jdx.mapper" targetProject=".\src" type="XMLMAPPER">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		
+		<!-- 指定数据库表 -->
+		<table tableName="stu_center">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
+		<table tableName="course">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
+
+		<table tableName="stu">
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
+
+
+
+	</context>
+</generatorConfiguration>
